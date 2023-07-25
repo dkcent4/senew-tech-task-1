@@ -1,7 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const sequelize = require("./utils/db");
 const personRoutes = require("./api/routes/person.routes");
+
+// use middlewares
+app.use(express.json()); // to parse request body
+app.use(express.urlencoded({ extended: true })); // to parse URL-encoded form data
 
 // Synchronize the models with the database
 sequelize
@@ -12,10 +17,6 @@ sequelize
   .catch((error) => {
     console.error("Error synchronizing the database:", error);
   });
-
-// use middlewares
-app.use(express.json()); // to parse request body
-app.use(express.urlencoded({ extended: true })); // to parse URL-encoded form data
 
 // use route middlewares
 app.use("/api/person", personRoutes);

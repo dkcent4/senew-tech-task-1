@@ -15,7 +15,6 @@ exports.getPeople = async (req, res) => {
 exports.createPeopleByRandom = async (req, res) => {
   try {
     const people = generateRandomPeople();
-    console.log(people);
     // Use bulkCreate to insert multiple people at once
     const createdPeople = await Person.bulkCreate(people);
     res.status(201).json(createdPeople);

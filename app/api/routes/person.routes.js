@@ -7,8 +7,8 @@ const upload = require("../../utils/upload-csv");
 const parseCSV = require("../middlewares/parse-csv");
 
 router.get("/get-people", personController.getPeople);
-router.get("/insert-random-people", personController.createPeopleByRandom);
 router.post("/single", personController.createPerson);
+router.post("/insert-random-people", personController.createPeopleByRandom);
 router.post(
   "/multi",
   upload.single("csvFile"),

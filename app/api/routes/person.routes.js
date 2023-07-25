@@ -6,13 +6,14 @@ const upload = require("../../utils/upload-csv");
 // to parse csv files
 const parseCSV = require("../middlewares/parse-csv");
 
-router.get("/getPeople", personController.getPeople);
+router.get("/get-people", personController.getPeople);
+router.get("/insert-random-people", personController.createPeopleByRandom);
 router.post("/single", personController.createPerson);
 router.post(
   "/multi",
   upload.single("csvFile"),
   parseCSV,
-  personController.createPersons
+  personController.createPeopleByFile
 );
 
 module.exports = router;

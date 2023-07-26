@@ -14,7 +14,7 @@ This is the back-end solution. It primarily contains api's.
 2. Create and include '.env' file in the root directory of 'back'. Following are the variable names to include in the .env file.
    . DB_USERNAME
    . DB_PASSWORD
-   . DB_DATABASE=senew
+   . DB_DATABASE
    . DB_HOST
    . PORT
 3. Create a database using MySQL and provide its name to the .env file

@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import CustomTable from "./components/customTable";
 
 function App() {
   const [data, setData] = useState([]);
@@ -19,27 +20,12 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>People</h1>
-      <div className="table">
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Contact</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((person) => (
-              <tr>
-                <td>{person.id}</td>
-                <td>{person.name}</td>
-                <td>{person.contact}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <h1 className="align-center">People</h1>
+      {data.length ? (
+        <CustomTable data={data} />
+      ) : (
+        <h3 className="align-center">...Loading</h3>
+      )}
     </div>
   );
 }

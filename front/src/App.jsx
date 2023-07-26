@@ -5,11 +5,15 @@ function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_BACKEND}/api/person/get-people`
-      );
-      const resData = await res.json();
-      setData(resData);
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_BACKEND}/api/person/get-people`
+        );
+        const resData = await res.json();
+        setData(resData);
+      } catch (error) {
+        console.error(error.message);
+      }
     };
     fetchData();
   }, []);
